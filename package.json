@@ -1,5 +1,5 @@
 {
-  "name": "@neo-adminjs/upload",
+  "name": "neo-adminjs-upload",
   "version": "2.1.0",
   "main": "index.js",
   "types": "types/index.d.ts",

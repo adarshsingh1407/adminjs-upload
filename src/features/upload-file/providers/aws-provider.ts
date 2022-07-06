@@ -37,6 +37,8 @@ export type AWSOptions = {
 
   /**
    * indicates whether metadata.contentType will be set as file.type
+   * Useful for cases when we need to explicitly set contentType header
+   * using the file.type as contentType
    */
   shouldSetContentType?: boolean;
 }

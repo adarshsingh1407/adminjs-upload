@@ -4,7 +4,7 @@ This is a fork of an official [AdminJS](https://github.com/SoftwareBrothers/admi
 
 # Additions over AdminJS/Upload
 
-1. Add support to send mimeType of uploaded file as System header in S3
+1. Added support to send mimeType of uploaded file as System header in S3
 
 ## AdminJS
 

@@ -34,12 +34,19 @@ export type AWSOptions = {
    * Default to 24h. If set to 0 adapter will mark uploaded files as PUBLIC ACL.
    */
   expires?: number;
+
+  /**
+   * indicates whether metadata.contentType will be set as file.type
+   */
+  shouldSetContentType?: boolean;
 }
 
 export class AWSProvider extends BaseProvider {
-  private s3: S3
+  private s3: S3;
 
-  public expires: number
+  private shouldSetContentType?: boolean;
+
+  public expires: number;
 
   constructor(options: AWSOptions) {
     super(options.bucket)
@@ -47,19 +54,22 @@ export class AWSProvider extends BaseProvider {
     let AWS_S3: typeof S3
     try {
       // eslint-disable-next-line
-      const AWS = require('aws-sdk')
+      const AWS = require('aws-sdk');
       AWS_S3 = AWS.S3
     } catch (error) {
       throw new Error(ERROR_MESSAGES.NO_AWS_SDK)
     }
     this.expires = options.expires ?? DAY_IN_MINUTES
     this.s3 = new AWS_S3(options)
+    this.shouldSetContentType = options?.shouldSetContentType
   }
 
-  public async upload(file: UploadedFile, key: string): Promise<S3.ManagedUpload.SendData> {
+  public async upload(
+    file: UploadedFile,
+    key: string,
+  ): Promise<S3.ManagedUpload.SendData> {
     const uploadOptions = { partSize: 5 * 1024 * 1024, queueSize: 10 }
     const tmpFile = fs.createReadStream(file.path)
-    console.log(file)
     const params: S3.PutObjectRequest = {
       Bucket: this.bucket,
       Key: key,
@@ -68,10 +78,16 @@ export class AWSProvider extends BaseProvider {
     if (!this.expires) {
       params.ACL = 'public-read'
     }
+    if (this.shouldSetContentType && file?.type) {
+      params.ContentType = file?.type
+    }
     return this.s3.upload(params, uploadOptions).promise()
   }
 
-  public async delete(key: string, bucket: string): Promise<S3.DeleteObjectOutput> {
+  public async delete(
+    key: string,
+    bucket: string,
+  ): Promise<S3.DeleteObjectOutput> {
     return this.s3.deleteObject({ Key: key, Bucket: bucket }).promise()
   }
 

@@ -1,3 +1,5 @@
+[![CI/CD](https://github.com/adarshsingh1407/adminjs-upload/actions/workflows/push.yml/badge.svg?branch=master)](https://github.com/adarshsingh1407/adminjs-upload/actions/workflows/push.yml)
+
 # Upload Feature for AdminJS (forked)
 
 This is a fork of an official [AdminJS](https://github.com/SoftwareBrothers/adminjs) feature which uploads files to resources.

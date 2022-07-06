@@ -1,10 +1,10 @@
+# Upload Feature for AdminJS (forked)
+
+This is a fork of an official [AdminJS](https://github.com/SoftwareBrothers/adminjs) feature which uploads files to resources.
+
 # Additions over AdminJS/Upload
 
 1. Add support to send mimeType of uploaded file as System header in S3
-
-# Upload Feature for AdminJS
-
-This is an official [AdminJS](https://github.com/SoftwareBrothers/adminjs) feature which uploads files to resources.
 
 ## AdminJS
 

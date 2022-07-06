@@ -46,6 +46,12 @@ const SingleFile: FC<SingleFileProps> = (props) => {
   )
 }
 
+SingleFile.defaultProps = {
+  path: '',
+  mimeType: '',
+  width: '100%',
+}
+
 const File: FC<Props> = ({ width, record, property }) => {
   const { custom } = property as unknown as { custom: PropertyCustom }
 
@@ -78,6 +84,10 @@ const File: FC<Props> = ({ width, record, property }) => {
       ))}
     </>
   )
+}
+
+File.defaultProps = {
+  width: '100%',
 }
 
 export default File

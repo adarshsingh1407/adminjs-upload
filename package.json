@@ -1,5 +1,6 @@
 {
   "name": "neo-adminjs-upload",
+  "description": "Fork of AdminJS-Upload - Added S3 custom contentType",
   "version": "2.1.0",
   "main": "index.js",
   "types": "types/index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "neo-adminjs-upload",
-  "version": "2.1.0",
+  "version": "2.3.0",
   "main": "index.js",
   "types": "types/index.d.ts",
   "repository": "git@github.com:adarshsingh1407/adminjs-upload.git",
